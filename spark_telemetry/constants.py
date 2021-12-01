@@ -39,6 +39,10 @@ LAP_DATA_STRUCT_DATA = '2f2HfB4HBHBHB3f9B'
 NUM_LDS_ENTRIES = 27
 LAP_DATA_DATA = '<' + (22 * LAP_DATA_STRUCT_DATA)
 
+CAR_MOTION_DATA_DATA = '6f6h6f'
+NUM_CMD_ENTRIES = 18
+MOTION_DATA = '<' + (22 * CAR_MOTION_DATA_DATA) + '30f'
+
 packet_ids = dict([
 	(0, "motion"),
 	(1, "session"),
