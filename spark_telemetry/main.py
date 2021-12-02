@@ -57,6 +57,7 @@ def main():
          # Double-space separated
          message = "  ".join(g_forces) + "\n"
          server.sendall(message.encode('UTF-8'))
+         #server.sendall(b'test  test  hello')
 
          g_forces = []
          last_sent_time = current_milli_time()
