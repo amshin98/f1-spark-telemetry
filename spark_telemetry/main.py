@@ -19,7 +19,7 @@ def main():
 
    print("Binding to F1 2020...")
    client.bind(("", 37022))
-   print("Successfully bound!")
+   print("Successfully bound!\n")
 
    # Connect to the class server
    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -49,7 +49,7 @@ def main():
          motion_data = struct.unpack_from(MOTION_DATA, data, offset=HEADER_SIZE)
          lat_g = motion_data[start_idx + 12]
          lon_g = motion_data[start_idx + 13]
-         #print(lat_g, lon_g)
+
          g_forces.append(str((lat_g, lon_g)))
 
       # Check if we want to send the packet to the server
@@ -57,7 +57,6 @@ def main():
          # Double-space separated
          message = "  ".join(g_forces) + "\n"
          server.sendall(message.encode('UTF-8'))
-         #server.sendall(b'test  test  hello')
 
          g_forces = []
          last_sent_time = current_milli_time()
