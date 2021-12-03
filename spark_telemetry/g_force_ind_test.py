@@ -27,7 +27,9 @@ def interp_lat_lon(lat_lon):
    return (i_lat, i_lon)
 
 
-def print_circle(center_coords):
+def get_str_circle(center_coords):
+   res = ""
+
    # dist represents distance to the center
    # for horizontal movement
    for i in range((2 * RADIUS)+1):
@@ -36,15 +38,17 @@ def print_circle(center_coords):
          
          # Check draw X
          if j == int(center_coords[0]) and i == int(center_coords[1]):
-            print("X ", end="")
+            res += "X "
          else:
             dist = math.sqrt((i - RADIUS) * (i - RADIUS) + (j - RADIUS) * (j - RADIUS))
   
             if (dist > RADIUS - 0.5 and dist < RADIUS + 0.5):
-               print("*",end="")
+               res += "*"
             else:
-               print("  ",end="")
-      print()
+               res += "  "
+      res += "\n"
+
+   return res
 
 
 def get_g_force_ind(pot_vals):
@@ -55,8 +59,8 @@ def get_g_force_ind(pot_vals):
       lon = pot_vals[1][1]
       lat_lon = (lat, lon)
       i_lat_lon = interp_lat_lon(lat_lon)
-      print_circle(i_lat_lon)
+      return get_str_circle(i_lat_lon)
 
 
 if __name__ == "__main__":
-   get_g_force_ind(('valid', (1.2, 1.8)))
+   print(get_g_force_ind(('valid', (1.2, 1.8))))
